@@ -1,0 +1,311 @@
+html, body {
+    zoom: 100%;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.body {
+    width: 92%; 
+    margin-left: 4%; 
+    text-align: center;
+    height: 100%;
+}
+
+.camera_div {
+    display: flex; 
+    /* position: absolute;  */
+    flex-direction: row;
+    justify-content: center;
+    width: 963px; 
+    height: 487px;
+    margin-left: 4%;
+}
+
+.maincamera {
+    width: 640px; 
+    height: 480px; 
+    position: absolute; 
+    left: 0px; 
+    background-color: antiquewhite;
+}
+
+.loadmore {
+    width: 20px;
+    height: 9px;
+    position: absolute;
+    right: 7px;
+    bottom: 15px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.loadup {
+    width: 20px;
+    height: 9px;
+    position: absolute;
+    right: 7px;
+    top: 105px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.category {
+    position: absolute; 
+    width: 323px;
+    left: 641px;
+    top: 0px;
+    height: 480px; 
+    background-color: antiquewhite;    
+}
+
+.tab {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(242,242,242);
+    border: 1px solid rgba(0,0,0,0);
+    /* border-bottom: 1px solid #D2D9DD; */
+    text-align: left;
+}
+
+.tabbtn {
+    width: 100%; 
+    height: 41px; 
+    display: flex; 
+    overflow: scroll hidden; 
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+h3 {
+    margin: 0px;
+    padding: 10px 20px;
+}
+
+.categories {
+    width: 100%;
+    height: 380px;
+    background-color: white;
+    text-align: center;
+    overflow-y: scroll;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.categories::-webkit-scrollbar {
+    display: none;
+}
+
+.setbtn {
+    background-color: red;
+    color: white;
+}
+
+.unsetbtn {
+    background-color: white;
+    color: black;
+}
+
+.unsetbtn:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.favourite {
+    position: absolute; 
+    width: 320px;
+    left: 0px;
+    height: 480px; 
+    z-index: 5;
+    border: 1px solid rgba(0,0,0,0.1);
+    background-color: white;   
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.favourities {
+    width: 100%;
+    height: 438px;
+    background-color: white;
+    overflow-y: scroll;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.favourities::-webkit-scrollbar {
+    display: none;
+}
+
+.category_div {
+    width: 250px;
+    height: 170px;
+    border-radius: 10px;
+    margin-left: 35px;
+    cursor: pointer;
+    margin-top: 15px;
+    background-color: white;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.category_div:hover {
+    /* background-color: #FAFFDA; */
+    box-shadow: 0 0 10px rgba(255,0,0,0.2);
+}
+
+.selectedCategory {
+    /* background-color: yellow; */
+    box-shadow: 0 0 10px red;
+}
+
+.selectedCategory:hover {
+    /* background-color: yellow; */
+    box-shadow: 0 0 10px red;
+}
+
+.cattitle_div {
+    width: 100%;
+    height: 15px;
+    margin-left: 15px;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.catimg_div {
+    width: 100%;
+    height: 145px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cataddfavbtn_div {
+    /* padding: 3px; */
+    width: 25px;
+    cursor: pointer;
+    /* text-align: center; */
+    margin-top: -184px;
+    margin-left: 185px;
+    /* width: fit-content; */
+    /* height: fit-content; */
+    /* border-radius: 5px; */
+    /* font-size: 10px; */
+    /* background-color: mediumspringgreen */
+}
+
+.heart {
+    fill: red;
+    position: relative;
+    top: 6px;
+    width:100%;
+    height:100%;
+    /* animation: pulse 1s ease infinite; */
+}
+
+.heart:hover {
+    /* fill: rgba(255,0,0,0.5); */
+    transform: scale(1.3);
+}
+
+.viewbtndiv {
+    padding: 3px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: -20px;
+    margin-left: 215px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    font-size: 10px;
+    background-color: mediumspringgreen
+}
+
+.viewbtndiv:hover {
+    background-color: yellowgreen;
+}
+
+.buybtndiv {
+    padding: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 98px;
+    margin-left: 175px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 3px;
+    font-size: 14px;
+    color: white;
+    background-color: rgb(250, 0, 83)
+}
+
+.buybtndiv:hover {
+    background-color: rgb(223, 159, 173);
+}
+
+@media only screen and (max-width: 640px) {
+
+    .category { 
+        width: 643px;
+        left: 0px;
+        height: 301px;
+    }
+
+    .categories {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        overflow: scroll hidden;
+        overflow-x: hidden;
+    }
+
+    .flex-categories {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        background-color: white;
+        text-align: center;
+    }
+
+    .flex-categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    .cataddfavbtn_div {
+        margin-left: 183px;
+        margin-right: 6px;
+    }
+
+    .maincamera {
+        width: 642px;
+    }
+
+    .loadmore {
+        width: 50px;
+        height: 28px;
+        right: 280px;
+        top: 8px;
+    }
+
+    .loadup {
+        width: 50px;
+        height: 28px;
+        right: 280px;
+        top: 8px;
+    }
+
+    .viewbtndiv {
+        margin-top: -19px;
+        margin-left: 213px;
+        margin-right: 7px;
+    }
+
+    .buybtndiv {
+        margin-left: 173px;
+    }
+}
+
+
+
