@@ -1,96 +1,111 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Layout</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/tryon.css">
-        <link rel="stylesheet" href="css/pentagon.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel = "icon" href = "img/arrow/logo.png" type = "image/x-icon">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <div class="body">
-            <div class="camera_div modal fade" id="camera_div" role="dialog">
-                <div class="maincamera" id="maincamera">        
-                    <video style="height: 100%;" id="inputVideo" autoplay muted ></video>
-                    <canvas id="overlay" style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; border: 1px solid rgba(0,0,0,0.1);"></canvas>
-                    <p id="nonecamera" class="hide" style="position: absolute; top: 45%; left: 27%; font-size: 25px; color:grey">
-                        Please check your camera
-                    </p>
-                    <div style="width: 16px; height: 16px; position: absolute; left: 0px; top: 3px; cursor: pointer; z-index: 5;" onclick="showfavorite()">
-                        <img style="width: 100%; height: 100%;" src="img/arrow/right1.png">
-                    </div>
-                    <div id="logo" class="hide" style="width: 50px; height: 50px; position: absolute; right: 10px; top: 10px; cursor: pointer; z-index: 5;">
-                        <img style="width: 100%; height: 100%;" src="img/arrow/logo.png">
-                    </div>
-                    <div id="pentagon" class="hide">
-                        <div style="width: 25px; height: 25px; position: absolute; right: 14px; top: -75px; cursor: pointer;" onclick="downSnapshot()">
-                            <img style="width: 100%; height: 100%;" src="img/arrow/download.png">
-                        </div>
-                    <div style="width: 25px; height: 25px; position: absolute; right: -11px; top: -57px; cursor: pointer;" onclick="window.open('https://www.facebook.com', '_blank')">
-                            <img style="width: 100%; height: 100%;" src="img/arrow/facebook.png">
-                        </div>
-                        <div style="width: 25px; height: 25px; position: absolute; right: 38px; top: -57px; cursor: pointer;" onclick="window.open('https://www.twitter.com', '_blank')">
-                            <img style="width: 100%; height: 100%;" src="img/arrow/twitter.png">
-                        </div>
-                        <div style="width: 25px; height: 25px; position: absolute; right: 30px; top: -29px; cursor: pointer;" onclick="console.log('Share Button clicked!')">
-                            <img style="width: 100%; height: 100%;" src="img/arrow/share.png">
-                        </div>
-                        <div style="width: 25px; height: 25px; position: absolute; right: -2px; top: -29px; cursor: pointer;" onclick="hidePentagon()">
-                            <img style="width: 100%; height: 100%;" src="img/arrow/back.png">
-                        </div>
-                    </div>
-                    <div id="menu" class="show" style="width: 25px; height: 25px; position: absolute; right: 15px; bottom: 15px; cursor: pointer; z-index: 5;" onclick="showPentagon()">
-                        <img style="width: 100%; height: 100%;" src="img/arrow/camera.png">
-                    </div>
-                </div>
-                <div class="favourite hide" id="favorite">
-                    <div style="width: 100%; height: 40px; text-align: left; border: 1px solid rgba(0,0,0,0.1); background-color: rgb(242,242,242);">
-                        <h3 style="font-size: 20px; margin: 0px;">Favourite Lists</h3>
-                        <div style="width: 16px; height: 16px; position: absolute; right: 0px; top: 3px; cursor: pointer;" onclick="hidefavorite()">
-                            <img style="width: 100%; height: 100%;" src="img/arrow/left1.png">
-                        </div>
-                    </div>
-                    <div class="favourities" id="favourities"></div>              
-                </div>
-                <div class="category" id="category">
-                    <div class="tab">
-                        <div style="width: 100%; height: 59px; text-align: left; margin-top: -20px;"><h3>Categories</h3></div>
-                        <div class="tabbtn" id="tabbtn">
-                            <ul class="nav nav-tabs" style="display: flex;">
-                                <li class="active" id="btn1">
-                                    <a  href="#1" data-toggle="tab">Earring</a>
-                                </li>
-                                <li id="btn2">
-                                    <a href="#2" data-toggle="tab">Necklaces</a>
-                                </li>
-                                <li id="btn3">
-                                    <a href="#3" data-toggle="tab">Pendants</a>
-                                </li>
-                                <li id="btn4">
-                                    <a  href="#1" data-toggle="tab">Mangalsutras</a>
-                                </li>
-                                <li id="btn5">
-                                    <a href="#2" data-toggle="tab">PendantSets</a>
-                                </li>
-                                <li id="btn6">
-                                    <a href="#3" data-toggle="tab">NecklaceSets</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="categories" id="categories"></div>              
-                </div>
-                <div style="width: 25px; height: 25px; position: absolute; right: 0px; top: 0px; cursor: pointer;" data-dismiss="modal">
-                    <img style="width: 100%; height: 100%;" src="img/arrow/close2.png">
-                </div>
-            </div>
-            <button id="clickme" style="position: absolute; bottom: 10px; left: 10px; width: 75px;"  data-toggle="modal" data-target="#camera_div">Click me</button>               
+<head>
+  <title>Layout</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/tryon.css">
+  <link rel="stylesheet" href="css/pentagon.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="img/arrow/logo.png" type="image/x-icon">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="body">
+  <div class="camera_div modal fade" id="camera_div" role="dialog">
+    <div class="maincamera" id="maincamera">
+      <video style="height: 100%; width: 100%; object-fit: cover; transform: rotateY(180deg);" id="inputVideo" autoplay="true"></video>
+      <canvas id="overlay"
+              style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%;"></canvas>
+      <p id="nonecamera" class="hide" style="position: absolute; top: 45%; left: 27%; font-size: 25px; color:grey">
+        Please check your camera
+      </p>
+      <div style="width: 16px; height: 16px; position: absolute; left: 0px; top: 3px; cursor: pointer; z-index: 5;"
+           onclick="showfavorite()">
+        <img style="width: 100%; height: 100%;" src="img/arrow/right1.png">
+      </div>
+      <div id="logo" class="hide"
+           style="width: 50px; height: 50px; position: absolute; right: 10px; top: 10px; cursor: pointer; z-index: 5;">
+        <img crossOrigin="Anonymous" style="width: 100%; height: 100%;" id="logoimg" src="https://c8.staticflickr.com/8/7492/15644563231_4d682b3c88_n.jpg" alt="The Scream">
+      </div>
+      <div id="pentagon" class="hide">
+        <div style="width: 25px; height: 25px; position: absolute; right: 14px; top: -75px; cursor: pointer;"
+             onclick="downSnapshot()">
+          <img style="width: 100%; height: 100%;" src="img/arrow/download.png">
         </div>
-        <script src="js/tryon.js"></script>
-        <script src="js/camera.js"></script>
-    </body>
+        <div style="width: 25px; height: 25px; position: absolute; right: -11px; top: -57px; cursor: pointer;"
+             onclick="window.open('https://www.facebook.com', '_blank')">
+          <img style="width: 100%; height: 100%;" src="img/arrow/facebook.png">
+        </div>
+        <div style="width: 25px; height: 25px; position: absolute; right: 38px; top: -57px; cursor: pointer;"
+             onclick="window.open('https://www.twitter.com', '_blank')">
+          <img style="width: 100%; height: 100%;" src="img/arrow/twitter.png">
+        </div>
+        <div style="width: 25px; height: 25px; position: absolute; right: 30px; top: -29px; cursor: pointer;"
+             onclick="console.log('Share Button clicked!')">
+          <img style="width: 100%; height: 100%;" src="img/arrow/share.png">
+        </div>
+        <div style="width: 25px; height: 25px; position: absolute; right: -2px; top: -29px; cursor: pointer;"
+             onclick="hidePentagon()">
+          <img style="width: 100%; height: 100%;" src="img/arrow/back.png">
+        </div>
+      </div>
+      <div id="menu" class="show"
+           style="width: 25px; height: 25px; position: absolute; right: 15px; bottom: 15px; cursor: pointer; z-index: 5;"
+           onclick="showPentagon()">
+        <img style="width: 100%; height: 100%;" src="img/arrow/camera.png">
+      </div>
+    </div>
+    <div class="favourite hide" id="favorite">
+      <div
+          style="width: 100%; height: 40px; text-align: left; border: 1px solid rgba(0,0,0,0.1); background-color: rgb(242,242,242);">
+        <h3 style="font-size: 20px; margin: 0px;">Favourite Lists</h3>
+        <div style="width: 16px; height: 16px; position: absolute; right: 0px; top: 3px; cursor: pointer;"
+             onclick="hidefavorite()">
+          <img style="width: 100%; height: 100%;" src="img/arrow/left1.png">
+        </div>
+      </div>
+      <div class="favourities" id="favourities"></div>
+    </div>
+    <div class="category" id="category">
+      <div class="tab">
+        <div style="width: fit-content; height: 59px; text-align: left; margin-top: -20px; cursor: pointer;" onclick="toggleCategory()"><h3>Categories</h3></div>
+        <div class="tabbtn" id="tabbtn">
+          <ul class="nav nav-tabs" style="display: flex;">
+            <li class="active" id="btn1">
+              <a href="#1" data-toggle="tab">Earring</a>
+            </li>
+            <li id="btn2">
+              <a href="#2" data-toggle="tab">Necklaces</a>
+            </li>
+            <li id="btn3">
+              <a href="#3" data-toggle="tab">Pendants</a>
+            </li>
+            <li id="btn4">
+              <a href="#1" data-toggle="tab">Mangalsutras</a>
+            </li>
+            <li id="btn5">
+              <a href="#2" data-toggle="tab">PendantSets</a>
+            </li>
+            <li id="btn6">
+              <a href="#3" data-toggle="tab">NecklaceSets</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="categories" id="categories"></div>
+    </div>
+    <div style="width: 25px; height: 25px; position: absolute; right: 0px; top: 0px; cursor: pointer;"
+         data-dismiss="modal">
+      <img style="width: 100%; height: 100%;" src="img/arrow/close2.png">
+    </div>
+  </div>
+  <button id="clickme" style="position: absolute; bottom: 10px; left: 10px; width: 75px;" data-toggle="modal"
+          data-target="#camera_div">Click me
+  </button>
+</div>
+<script src="js/camera.js"></script>
+<script src="js/tryon.js"></script>
+</body>
 </html>

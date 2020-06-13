@@ -87,6 +87,7 @@ h3 {
     width: 100%;
     height: 380px;
     background-color: white;
+    display: block;
     text-align: center;
     overflow-y: scroll;
     border: 1px solid rgba(0,0,0,0.1);
@@ -274,7 +275,7 @@ h3 {
     }
 
     .cataddfavbtn_div {
-        margin-left: 183px;
+        margin-left: 175px;
         margin-right: 6px;
     }
 
@@ -297,13 +298,13 @@ h3 {
     }
 
     .viewbtndiv {
-        margin-top: -19px;
-        margin-left: 213px;
-        margin-right: 7px;
+        margin-top: -22px;
+        margin-left: 207px;
+        margin-right: 14px;
     }
 
     .buybtndiv {
-        margin-left: 173px;
+        margin-left: 170px;
     }
 }
 
