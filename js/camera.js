@@ -1,22 +1,26 @@
 let stream = document.getElementById("inputVideo"),
   capture = document.createElement("canvas"),
   snapshot = document.createElement("div"),
-  img = new Image();
+  img = new Image(),
+  globalCapturedStatus = false,
+  flipMethod = 1;
 
 snapshot.id = "snapshot";
 snapshot.style.position = "absolute";
 snapshot.style.overflow = "hidden";
-snapshot.style.zIndex = 1;
+snapshot.style.zIndex = 0;
 snapshot.classList.add("hide");
 document.getElementById("maincamera").appendChild(snapshot);
 
 let cameraStream = null, global_random_qr_key;
 
-function startStreaming(w, h) {
+function startStreaming(method) {
   let mediaSupport = 'mediaDevices' in navigator;
   if (mediaSupport && null == cameraStream) {
     navigator.mediaDevices.getUserMedia({
-      video: true
+      video: {
+        facingMode: (method == 1) ? 'user' : {exact: 'environment'}
+      }      
     })
       .then(function (mediaStream) {
         cameraStream = mediaStream;
@@ -42,7 +46,21 @@ function stopStreaming() {
   }
 }
 
+function flipCamera() {
+  console.log("flipCamera");
+  stopStreaming()
+  if(flipMethod == 1) {
+    startStreaming(2);
+    flipMethod = 2;
+  } else {
+    startStreaming(1);
+    flipMethod = 1;
+  }
+}
+
 function captureSnapshot() {
+  globalCapturedStatus = true;
+  console.log("globalCapturedStatus", globalCapturedStatus);
   global_random_qr_key = cameraStream ?
     Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15) :
     "Nonecamera";
@@ -59,8 +77,7 @@ function captureSnapshot() {
         ctx.fillRect(-delta, 0, ht * ratio, ht);
         ctx.save();
         ctx.scale(-1,1);
-        ctx.drawImage(stream, -ht * ratio, 0, ht * ratio, ht);
-        ctx.drawImage(document.getElementById("logoimg"), -(capture.width - 10), 10, 50, 50);
+        ctx.drawImage(stream, -ht * ratio, 0, ht * ratio, ht); 
         ctx.restore();
         snapshot.innerHTML = '';
         snapshot.appendChild(capture);
@@ -76,7 +93,6 @@ function captureSnapshot() {
         ctx.save();
         ctx.scale(-1,1);
         ctx.drawImage(stream, -capture.width, 0, capture.width, capture.height);
-        ctx.drawImage(document.getElementById("logoimg"), -(capture.width - 10), 10, 50, 50);
         ctx.restore();
         snapshot.innerHTML = '';
         snapshot.appendChild(capture);
@@ -101,6 +117,7 @@ function hide(id) {
 }
 
 function removeSnapshot() {
+  globalCapturedStatus = false;
   hide("snapshot");
   hide("logo");
 }
@@ -109,7 +126,10 @@ function downSnapshot() {
   if(!cameraStream) {
     return;
   }
-  let a = document.createElement('a');
+  let a = document.createElement('a'), ctx = capture.getContext('2d');
+
+  ctx.drawImage(document.getElementById("logoimg"), capture.width - 60, 10, 50, 50);
+
   a.href = capture.toDataURL('image/jpg');
   a.download = "snapshot.jpg";
   document.body.appendChild(a);
